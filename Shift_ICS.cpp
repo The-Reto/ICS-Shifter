@@ -3,6 +3,8 @@
 #include <string>
 using namespace std;
 
+const int POSITION_OF_HOUR_DIGIT = 7, HOUR_DIGIT_LENGTH = 2, HOURS_IN_A_DAY = 24;
+
 string to_string(int n, int len)
 {
 	string result(len--, '0');
@@ -29,18 +31,18 @@ void shift(string fileName, int shiftBy)
 		{
 			if (line.find("DTEND") == 0 || line.find("DTSTART") == 0)
 			{
-				int newTime = stoi( line.substr(line.length()-7, 2) ) + shiftBy;
+				int newTime = stoi( line.substr(line.length()-POSITION_OF_HOUR_DIGIT, HOUR_DIGIT_LENGTH) ) + shiftBy;
 				if (newTime < 0)
 				{
-					newTime += 24;
+					newTime += HOURS_IN_A_DAY;
 					shiftDateBy(-1);
 				}
-				else if (newTime >= 24)
+				else if (newTime >= HOURS_IN_A_DAY)
 				{
-					newTime %= 24;
+					newTime %= HOURS_IN_A_DAY;
 					shiftDateBy(1);
 				}
-				line.replace(line.length()-7,2,to_string(newTime, 2));
+				line.replace(line.length()-POSITION_OF_HOUR_DIGIT,2,to_string(newTime, HOUR_DIGIT_LENGTH));
 			}
 			outputFile << line;
 		}
