@@ -5,7 +5,7 @@ Instead of fixing the bug in the GNOME-Calendar this code allows you to shift al
 The code can ofcourse also be used to move all dates in a given file around by an integer amound of hours - for whatever reason you'd like to do that.
 However i higly recommend saving an original copy of the .ics File for later use.
 
-I'm not a trained programmer - therefore, if you spot an error, please let me know I'd love to learn.
+I'm not a trained programmer - therefore, if you spot an error, please let me know I'd love to learn. (Also I'm fully aware that using C++ to solve such a simple problem is an overkill as python would have done the trick but I wanted to do some more C++ programming as training)
 
 # How to use ICS-Shifter
 - compile the code
